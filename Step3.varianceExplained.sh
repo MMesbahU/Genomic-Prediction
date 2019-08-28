@@ -114,6 +114,15 @@ ${GCTA} --reml \
 	--thread-num ${Threads} \
 	--out ${outVARdir}/${breed}.VarExp_B50k_Del
 
+## B50K + GWAS_FI + Deletions 
+echo -e "${outGRMs}/GRM_B50k_${breed}\n${outGRMs}/GRM.Chr1_29.${breed}_FI_GWAS${p_value}\n${outGRMs}/GRM.$(basename ${deletions} )" \
+	>> ${outGRMs}/GRM.B50k_FI_Del.txt
+${GCTA} --reml \
+	--mgrm ${outGRMs}/GRM.B50k_FI_Del.txt \
+	--pheno ${phenoType} \
+	--thread-num ${Threads} \
+	--out ${outVARdir}/${breed}.VarExp_B50k_FI_Del
+
 ## B50K + GWAS_FI + 5-subtraits 
 echo -e "${outGRMs}/GRM_B50k_${breed}\n${outGRMs}/GRM.Chr1_29.${breed}_FI_GWAS${p_value}\n${outGRMs}/GRM.Chr1_29.${breed}_AISc_GWAS${p_value}\n${outGRMs}/GRM.Chr1_29.${breed}_AISh_GWAS${p_value}\n${outGRMs}/GRM.Chr1_29.${breed}_ICF_GWAS${p_value}\n${outGRMs}/GRM.Chr1_29.${breed}_IFLh_GWAS${p_value}\n${outGRMs}/GRM.Chr1_29.${breed}_IFLc_GWAS${p_value}" \
 	>> ${outGRMs}/GRM.B50k_FI_AISch_IFLch_ICF.txt
